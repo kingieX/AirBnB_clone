@@ -5,7 +5,8 @@
 
 
 import uuid
-import datetime
+from datetime import datetime
+import json
 
 
 class BaseModel:
@@ -31,13 +32,14 @@ class BaseModel:
         '''
             updates update_at with current datetime
                 '''
-        self.update_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def to_dict(self):
         '''
             returns dict of __dict__ of class instance
             '''
-        my_dict = self.__dict__()
-        my_dict[__class__] = self.__class__.__name__
-        update_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        my_dict = self.__dict__
+        my_dict["__class__"] = self.__class__.__name__
+        self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        return my_dict
