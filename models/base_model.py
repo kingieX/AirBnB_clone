@@ -38,8 +38,8 @@ class BaseModel:
         '''
             returns dict of __dict__ of class instance
             '''
+        self.updated_at = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        self.created_at = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         my_dict = self.__dict__
         my_dict["__class__"] = self.__class__.__name__
-        self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         return my_dict
