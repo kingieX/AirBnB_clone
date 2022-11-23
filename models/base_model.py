@@ -14,13 +14,21 @@ class BaseModel:
         class of type BaseModel
         '''
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         '''
             initializes class object
+            from dictionary
             '''
-        self.id = str(uuid.uuid1())
-        self.created_at = datetime.now()
-        self.updated_at = self.created_at
+        if len(kwargs) != 0:
+            for key, value in kwargs.items():
+                if key == "created_at" or key == "updated_at":
+                    value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
+                if key != "__class__":
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid1())
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
 
     def __str__(self):
         '''
