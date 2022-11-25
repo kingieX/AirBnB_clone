@@ -18,6 +18,10 @@ class BaseModel:
         '''
             initializes class object
             from dictionary
+
+            Args:
+                *args (any): unused.
+                **kwargs (dict): Key/value pairs of attributes.
             '''
         if len(kwargs) != 0:
             for key, value in kwargs.items():
