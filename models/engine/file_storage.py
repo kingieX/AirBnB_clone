@@ -11,6 +11,11 @@ import uuid
 from models.base_model import BaseModel
 from datetime import datetime
 from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
 
 class FileStorage:
@@ -51,5 +56,3 @@ class FileStorage:
                 my_dict = json.load(f)
                 for key, v in my_dict.items():
                     FileStorage.__objects[key] = eval(v['__class__'])(**v)
-        except FileNotFoundError:
-            return

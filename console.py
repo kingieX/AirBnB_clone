@@ -8,6 +8,12 @@ import sys
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
+
 
 def parse(arg):
     curly_braces = re.search(r"\{(.*?)\}", arg)
@@ -26,6 +32,7 @@ def parse(arg):
         retl.append(curly_braces.group())
         return retl
 
+
 class HBNBCommand(cmd.Cmd):
     '''defines the command line
 
@@ -37,6 +44,11 @@ class HBNBCommand(cmd.Cmd):
     __classes = {
             "BaseModel",
             "User",
+            "State",
+            "City",
+            "Place",
+            "Amenity",
+            "Review"
             }
 
     def do_quit(self, line):
@@ -44,7 +56,8 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_EOF(self, line):
-        '''exits the programe'''
+        '''exits the program'''
+        print("")
         return True
 
     def emptyline(self):
@@ -72,9 +85,9 @@ class HBNBCommand(cmd.Cmd):
         print("*** Unknown syntax: {}".format(arg))
         return False
 
-     def do_create(self, arg):
+    def do_create(self, arg):
         """Usage: create <class>
-        Create a new class instance and print its id.
+            Create a new class instance and print its id.
         """
         argl = parse(arg)
         if len(argl) == 0:
@@ -85,7 +98,7 @@ class HBNBCommand(cmd.Cmd):
             print(eval(argl[0])().id)
             storage.save()
 
-      def do_show(self, arg):
+    def do_show(self, arg):
         """Usage: show <class> <id> or <class>.show(<id>)
         Display the string representation of a class instance of a given id.
         """
