@@ -6,7 +6,7 @@
 
 import uuid
 from datetime import datetime
-import json
+import models
 
 
 class BaseModel:
@@ -23,12 +23,13 @@ class BaseModel:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
                     value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
-                if key != "__class__":
+                if key != '__class__':
                     setattr(self, key, value)
         else:
             self.id = str(uuid.uuid1())
             self.created_at = datetime.now()
-            self.updated_at = self.created_at
+            self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         '''
@@ -41,13 +42,14 @@ class BaseModel:
             updates update_at with current datetime
                 '''
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         '''
             returns dict of __dict__ of class instance
             '''
-        self.updated_at = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        self.created_at = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        my_dict = self.__dict__
+        my_dict = self.__dict__.copy()
+        my_dict['updated_at'] = self.updated_at.isoformat()
+        my_dict['created_at'] = self.created_at.isoformat()
         my_dict["__class__"] = self.__class__.__name__
         return my_dict
