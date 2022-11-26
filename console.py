@@ -3,6 +3,8 @@
 
 
 import cmd
+import re
+from shlex import split
 import os
 import sys
 from models import storage

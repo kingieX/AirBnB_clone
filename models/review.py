@@ -4,7 +4,7 @@ from models.base_model import BaseModel
 
 
 class Review(BaseModel):
-    """class representing a review""""
+    """class representing a review
 
     Attributes:
         place_id: string - empty string: it will be the Place.id
