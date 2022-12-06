@@ -1,0 +1,68 @@
+section.places article.amenities {
+	margin-top: 40px;
+}
+
+section.places article.amenities h2 {
+	font-size: 16px;
+	border-bottom: #DDDDDD 1px
+}
+
+section.places article.amenities ul {
+	list-style: none;
+}
+
+section.places article.amenities ul.tv_logo {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 50px;
+	width: 50px;
+	background-image: url(../images/tv_icon.png);
+	background-repeat: no-repeat;
+	background-size: 40%;
+}
+
+section.places article.amenities ul.wifi_logo {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 50px;
+	width: 50px;
+	background-image: url(../images/wifi_icon.png);
+	background-repeat: no-repeat;
+	background-size: 40%;
+}
+
+section.places article.amenities ul.pet_logo {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 50px;
+	width: 50px;
+	background-image: url(../images/pet_icon.png);
+	background-repeat: no-repeat;
+	background-size: 40%;
+}
+
+section.places article.reviews {
+	margin: 40px;
+}
+
+section.places article.reviews h2 {
+	font-size: 16px;
+	border-bottom: #DDDDDD 1px;
+}
+
+section.places article.reviews ul {
+	list-style: none;
+}
+
+section.places article.reviews ul h3 {
+	font-size: 14px;
+}
+
+section.places article.reviews ul p {
+	font-size: 12px;
+}
+
+
